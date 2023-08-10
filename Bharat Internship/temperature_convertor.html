@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      background-image: url('default.jpg');
+      background-size: cover;
+      text-align: center;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-top: 150px;
+    }
+
+    #temperature-input {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    #convert-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Temperature Converter</h1>
+  <input type="number" id="temperature-input" placeholder="Enter temperature">
+  <button id="convert-button">Convert</button>
+  <div id="result"></div>
+
+  <script>
+    const convertButton = document.getElementById("convert-button");
+    const resultDiv = document.getElementById("result");
+
+    convertButton.addEventListener("click", () => {
+      const temperatureInput = document.getElementById("temperature-input").value;
+      const convertedTemperature = (temperatureInput - 32) * 5 / 9;
+
+      resultDiv.innerHTML = `Converted temperature: ${convertedTemperature.toFixed(2)} &#8451;`;
+
+      if (convertedTemperature >= 30) {
+        document.body.style.backgroundImage = "url('hot.jpg')";
+      } else if (convertedTemperature <= 10) {
+        document.body.style.backgroundImage = "url('cold.jpg')";
+      } else {
+        document.body.style.backgroundImage = "url('default.jpg')";
+      }
+    });
+  </script>
+</body>
+</html>
